@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            <img class="mb-4" src="../images/user-icon.png" alt="">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Please Create your Account
+            </h1>
+            <br>
+            <div class="form-group">
+                {{ form.name.label() }}
+                {{ form.name(class="form-control", placeholder="User Name") }}
+            </div>
+
+             <div class="form-group">
+                {{ form.email.label() }}
+                {{ form.name(class="form-control", placeholder="E-mail Address") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password1.label() }}
+                {{ form.name(class="form-control", placeholder="Password") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.password2.label() }}
+                {{ form.name(class="form-control", placeholder="Please confirm your password") }}
+            </div>
+
+            <br>
+            {{ form.submit(class="brn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+{% endblock %}
