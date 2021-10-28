@@ -7,6 +7,7 @@
 {% block content %}
     <div class="container">
         <form method="POST">
+            {{ form.hiddend_tag() }}
             <img class="mb-4" src="../images/user-icon.png" alt="">
             <h1 class="h3 mb-3 font-weight-normal">
                 Please Create your Account
@@ -19,17 +20,17 @@
 
              <div class="form-group">
                 {{ form.email.label() }}
-                {{ form.name(class="form-control", placeholder="E-mail Address") }}
+                {{ form.email(class="form-control", placeholder="E-mail Address") }}
             </div>
 
             <div class="form-group">
                 {{ form.password1.label() }}
-                {{ form.name(class="form-control", placeholder="Password") }}
+                {{ form.password1(class="form-control", placeholder="Password") }}
             </div>
 
             <div class="form-group">
                 {{ form.password2.label() }}
-                {{ form.name(class="form-control", placeholder="Please confirm your password") }}
+                {{ form.password2(class="form-control", placeholder="Please confirm your password") }}
             </div>
 
             <br>
