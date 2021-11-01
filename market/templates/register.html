@@ -6,28 +6,27 @@
 
 {% block content %}
     <div class="container">
+        <div style="display:flex; align-items: center; padding-top: 50px;">
+            <img class="mb-4" src="{{ url_for('static', filename='images/register.png') }}" alt="">
+            <h1 class="h3 mb-3 font-weight-normal" style="padding-left:10px;">Account Registration</h1>
+        </div>
         <form method="POST">
-            {{ form.hiddend_tag() }}
-            <img class="mb-4" src="../images/user-icon.png" alt="">
-            <h1 class="h3 mb-3 font-weight-normal">
-                Please Create your Account
-            </h1>
-            <br>
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.name.label() }}
                 {{ form.name(class="form-control", placeholder="User Name") }}
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 {{ form.email.label() }}
                 {{ form.email(class="form-control", placeholder="E-mail Address") }}
             </div>
             <div class="form-group">
-                {{ form.password1.label() }}
-                {{ form.password1(class="form-control", placeholder="Password") }}
+                {{ form.password.label() }}
+                {{ form.password(class="form-control", placeholder="Password") }}
             </div>
             <div class="form-group">
-                {{ form.password2.label() }}
-                {{ form.password2(class="form-control", placeholder="Please confirm your password") }}
+                {{ form.password_check.label() }}
+                {{ form.password_check(class="form-control", placeholder="Confirm your password") }}
             </div>
             <br>
             {{ form.submit(class="brn btn-lg btn-block btn-primary") }}
