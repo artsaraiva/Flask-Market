@@ -14,22 +14,27 @@
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.name.label() }}
-                {{ form.name(class="form-control", placeholder="User Name") }}
+                {{ form.name(class="form-control", placeholder="") }}
             </div>
             <div class="form-group">
                 {{ form.email.label() }}
-                {{ form.email(class="form-control", placeholder="E-mail Address") }}
+                {{ form.email(class="form-control", placeholder="") }}
             </div>
             <div class="form-group">
                 {{ form.password.label() }}
-                {{ form.password(class="form-control", placeholder="Password") }}
+                {{ form.password(class="form-control", placeholder="") }}
             </div>
             <div class="form-group">
                 {{ form.password_check.label() }}
-                {{ form.password_check(class="form-control", placeholder="Confirm your password") }}
+                {{ form.password_check(class="form-control", placeholder="") }}
             </div>
             <br>
-            {{ form.submit(class="brn btn-lg btn-block btn-primary") }}
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+            <br>
+            <div style="display:flex; align-items: center;">
+                <div style="padding-right: 10px;">Already have an account?</div>
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('login_page') }}">Sign in</a>
+            </div>
         </form>
     </div>
 {% endblock %}

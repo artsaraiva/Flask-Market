@@ -15,10 +15,18 @@ class RegisterForm(FlaskForm):
     email = StringField(label='E-mail:', validators=[Email(), DataRequired()])
     password = PasswordField(label='Password', validators=[Length(min=6), DataRequired()])
     password_check = PasswordField(label='Confirm Password', validators=[EqualTo('password'), DataRequired()])
-    submit = SubmitField(label='Submit')
+    submit = SubmitField(label='Sign-up')
 
 
 class LoginForm(FlaskForm):
     email = StringField(label='E-mail', validators=[DataRequired()])
     password = PasswordField(label='Password', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
+
+
+class PurchaseItemForm(FlaskForm):
+    submit = SubmitField(label='Purchase!')
+
+
+class SellItemForm(FlaskForm):
+    submit = SubmitField(label='Sell!')

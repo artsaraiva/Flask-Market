@@ -7,24 +7,27 @@
 {% block content %}
 <div class="container">
     <form method="POST" class="form-signin" style="color:white">
+        {{ form.hidden_tag() }}
         <div style="display:flex; align-items: center; padding-top: 50px;">
-            <img class="mb-4" src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png" alt="">
-            <h1 class="h3 mb-3 font-weight-normal" style="padding-left:10px;">Login</h1>
+            <img class="mb-4" src="{{ url_for('static', filename='images/login.png') }}" alt="">
+            <h1 class="h3 mb-3 font-weight-normal" style="padding-left:25px; font-weight:bolder;">Sign in</h1>
         </div>
         <br>
         <div class="form-group">
-            {{ form.username.label() }}
-            {{ form.username(class="form-control", placeholder="User Name") }}
+            {{ form.email.label() }}
+            {{ form.email(class="form-control", placeholder="") }}
         </div>
         <div class="form-group">
             {{ form.password.label() }}
-            {{ form.password(class="form-control", placeholder="Password") }}
+            {{ form.password(class="form-control", placeholder="") }}
         </div>
-        <div class="checkbox mb-3">
-            <h6>New to Flask-Market?</h6>
-            <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
-        </div>
+        <br>
         {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        <br>
+        <div style="display:flex; align-items: center;">
+            <div style="padding-right: 10px;">New to Arthur's Market?</div>
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Sign up</a>
+        </div>
     </form>
 </div>
 {% endblock %}
