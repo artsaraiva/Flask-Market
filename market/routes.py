@@ -1,7 +1,7 @@
 from market import app
 from flask import render_template, redirect, url_for, flash, request
 from market.models import Item, User
-from market.forms import RegisterForm, LoginForm, PurchaseItemForm
+from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
 from flask_login import login_user, logout_user, login_required, current_user
 import os
@@ -17,20 +17,31 @@ def home_page():
 @login_required
 def market_page():
     purchase_form = PurchaseItemForm()
+    sell_form = SellItemForm()
     if request.method == 'POST':
+        # Purchase
         purchased_item = request.form.get('purchased_item')
-        p_item_object = Item.query.get(int(purchased_item))
+        p_item_object = Item.query.filter_by(id=purchased_item).first()
         if p_item_object:
             if current_user.can_purchase(p_item_object):
                 p_item_object.buy(current_user)
                 flash(f'You have successfully purchased the item: {p_item_object.name}', category='success')
             else:
                 flash(f'You don\'t have enough budget to purchase this item!', category='danger')
+        # Sell
+        sold_item = request.form.get('sold_item')
+        s_item_object = Item.query.filter_by(id=sold_item).first()
+        if s_item_object:
+            if current_user.can_sell(s_item_object):
+                s_item_object.sell(current_user)
+                flash(f'You have successfully sold the item: {s_item_object.name}', category='success')
+            else:
+                flash(f'You don\'t actually own this item!', category='danger')
+        return redirect(url_for('market_page'))
     if request.method == 'GET':
         items = Item.query.filter_by(owner=None)
         owned_items = Item.query.filter_by(owner=current_user.id)
-    return render_template('market.html', items=items, owned_items=owned_items, purchase_form=purchase_form)
-
+        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items, sell_form=sell_form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
