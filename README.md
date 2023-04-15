@@ -1,4 +1,4 @@
-# SentimentWatch
+# FlaskMarket
 
 FlaskMarket is a web application built using Python and Flask simulating an e-commerce.
 
